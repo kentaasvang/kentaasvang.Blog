@@ -6,7 +6,3 @@ app = Flask(__name__)
 def index():
     html = "<h1> hello, world </h1>"
     return render_template_string(html)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
