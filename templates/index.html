@@ -6,6 +6,15 @@
     <title> title </title>
 </head>
 <body>
-
+    <ul>
+        {% for post in posts %}
+            <a href="{{ url_for('post', id=post.id) }}">
+                <li>
+                    <h1> {{ post.title }} </h1>
+                    <p> {{ post.content }} </p>
+                </li>
+            </a>
+        {% endfor %}
+    </ul>
 </body>
 </html>
