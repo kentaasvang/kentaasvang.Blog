@@ -1,7 +1,7 @@
 # miniblog
 
-A simple markdown blog written with flask
+A simple blog written in flask
 
+## Agenda
 
-## TODO's
-- [ ] add mypy for type-checking
+To learn stuff and have fun
