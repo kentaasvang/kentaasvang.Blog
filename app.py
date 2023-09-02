@@ -1,8 +1,9 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template, Blueprint
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    html = "<h1> hello, world </h1>"
-    return render_template_string(html)
+    return render_template("index.html")
+
+
