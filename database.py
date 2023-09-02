@@ -1,24 +1,18 @@
 import sqlite3
-from sqlite3 import Connection, Cursor
-from typing import Dict, List
+from typing import Dict, List, Tuple
 from flask import g
 import settings
 
 DATABASE = settings.DATABASE_PATH
 
-def init_db() -> None:
-    db = sqlite3.connect(DATABASE)
-    _run_migrations(db)
-    db.close()
-
 def get_posts() -> List[Dict[str, int | str]]:
     db = sqlite3.connect(DATABASE)
-    posts: List[Dict[str, int | str]] = db.execute("SELECT * FROM posts").fetchall()
+    posts: List[Tuple[int, str, str]] = db.execute("SELECT * FROM post").fetchall()
     db.close()
     return posts
 
-def _run_migrations(db: Connection) -> None:
-    schema_file: str = open("./schema.sql", "r")
-    schema = schema_file.read()
-    schema_file.close()
-    db.cursor().executescript(schema)
+def get_post(id: int) -> Dict[str, int | str]:
+    db = sqlite3.connect(DATABASE)
+    post: Tuple[int, str, str] = db.execute("SELECT * FROM post WHERE id = ?", (id,)).fetchone()
+    db.close()
+    return post
