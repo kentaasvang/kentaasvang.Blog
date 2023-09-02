@@ -11,7 +11,7 @@ author: "John Doe"
 
 Markdown is a lightweight markup language that makes it easy to format text. In this post, we''ll explore its various features and show how it can make your writing experience more efficient and enjoyable.
 
-![Markdown Logo](https://example.com/path/to/markdown-logo.png)
+![Markdown Logo](/static/images/markdown.png)
 
 ## Why Use Markdown?
 

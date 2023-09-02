@@ -1,9 +1,10 @@
 from flask import Flask, render_template
+from flaskext.markdown import Markdown
 from database import get_posts, get_post
 from typing import Tuple
 
 app = Flask(__name__)
-
+Markdown(app)
 
 @app.route("/")
 def index() -> str:
