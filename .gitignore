@@ -3,3 +3,4 @@
 
 app.sqlite
 static/**
+post/**
