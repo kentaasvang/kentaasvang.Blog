@@ -3,4 +3,5 @@
 
 app.sqlite
 static/**
-post/**
+posts/**
+.env
