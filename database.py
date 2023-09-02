@@ -1,46 +1,24 @@
-from typing import Dict, List, Any
+import sqlite3
+from sqlite3 import Connection, Cursor
+from typing import Dict, List
+from flask import g
+import settings
 
-database: Dict[str, List[Any]] = {
-    "posts": []
-}
+DATABASE = settings.DATABASE_PATH
 
 def init_db() -> None:
-    database["posts"].append({
-        "id": 1,
-        "title": "First post",
-        "body": "This is my first post"
-    })
-    database["posts"].append({
-        "id": 2,
-        "title": "Second post",
-        "body": "This is my second post"
-    })
-    database["posts"].append({
-        "id": 3,
-        "title": "Third post",
-        "body": "This is my third post"
-    })
+    db = sqlite3.connect(DATABASE)
+    _run_migrations(db)
+    db.close()
 
+def get_posts() -> List[Dict[str, int | str]]:
+    db = sqlite3.connect(DATABASE)
+    posts: List[Dict[str, int | str]] = db.execute("SELECT * FROM posts").fetchall()
+    db.close()
+    return posts
 
-class Post:
-    def __init__(self, id: int, title: str, body: str):
-        self.id = id
-        self.title = title
-        self.body = body
-
-class Posts:
-    @staticmethod
-    def get() -> List[Post]:
-        posts: List[Dict[str, int | str]] = database["posts"]
-        ret_val = []
-        for post in posts:
-            ret_val.append(Post(**post))
-        return ret_val
-
-    @staticmethod
-    def get_id(id: int) -> Post | None:
-        posts: List[Dict[str, int | str]] = database["posts"]
-        for post in posts:
-            if post["id"] == id:
-                return Post(**post)
-        return None
+def _run_migrations(db: Connection) -> None:
+    schema_file: str = open("./schema.sql", "r")
+    schema = schema_file.read()
+    schema_file.close()
+    db.cursor().executescript(schema)
