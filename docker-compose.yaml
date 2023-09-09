@@ -3,8 +3,8 @@ version: "3.1"
 services:
   web:
     volumes:
-      - ./nginx/sites-available:/etc/nginx/templates
-      - ./html:/usr/share/nginx/html
+      - ./dist/nginx:/etc/nginx/templates
+      - ./dist/html:/usr/share/nginx/html
     build: .
     ports:
       - "8080:80"

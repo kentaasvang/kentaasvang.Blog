@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> miniblog </title>
+    <title> {{ MINIBLOG_NAME }} </title>
+
 </head>
 <body>
-    <h1> Welcome to the greatest blog on the internet. </h1>  
+
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
