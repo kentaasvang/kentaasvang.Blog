@@ -17,7 +17,7 @@ HTML_MINIBLOG_NAME=os.getenv("HTML_MINIBLOG_NAME")
 HTML_PATH=os.getenv("HTML_PATH")
 
 # *** Nginx variables ***
-NGINX_CONF_PATH=os.getenv("NGINX_CONF_PATH")
+NGINX_PATH=os.getenv("NGINX_PATH")
 NGINX_SITES_AVAILABLE=os.getenv("NGINX_SITES_AVAILABLE")
 NGINX_SERVER_NAME=os.getenv("NGINX_SERVER_NAME")
 NGINX_LISTEN=os.getenv("NGINX_LISTEN")
@@ -29,16 +29,18 @@ for file in os.listdir(NGINX_SITES_AVAILABLE):
     os.remove(os.path.join(NGINX_SITES_AVAILABLE, file))
 
 logging.info("Creating new nginx config file")
-with open(NGINX_CONF_PATH, "r") as nginx_template_file:
-    nginx_template_content = nginx_template_file.read()
-    nginx_template_content = nginx_template_content.replace("[NGINX_SERVER_NAME]", NGINX_SERVER_NAME)
-    nginx_template_content = nginx_template_content.replace("[NGINX_LISTEN]", NGINX_LISTEN)
-    nginx_template_content = nginx_template_content.replace("[NGINX_INDEX]", NGINX_INDEX)
-    nginx_template_content = nginx_template_content.replace("[NGINX_ROOT]", NGINX_ROOT)
+nginx_jinja_env = Environment(loader=FileSystemLoader(NGINX_PATH))
+nginx_context = {
+    "NGINX_SERVER_NAME": NGINX_SERVER_NAME,
+    "NGINX_LISTEN": NGINX_LISTEN,
+    "NGINX_INDEX": NGINX_INDEX,
+    "NGINX_ROOT": NGINX_ROOT,
+}
 
-    new_nginx_conf_file = os.path.join(NGINX_SITES_AVAILABLE, NGINX_SERVER_NAME.lower())
-    with open(new_nginx_conf_file, "w") as nginx_conf_file:
-        nginx_conf_file.write(nginx_template_content)
+nginx_output = nginx_jinja_env.get_template("nginx.conf").render(nginx_context)
+
+with open(os.path.join(NGINX_SITES_AVAILABLE, NGINX_SERVER_NAME), "w") as nginx_file:
+    nginx_file.write(nginx_output)
 
 logging.info("Cleaning up old HTML files")
 for file in os.listdir(NGINX_ROOT):
@@ -46,15 +48,16 @@ for file in os.listdir(NGINX_ROOT):
         os.remove(os.path.join(NGINX_ROOT, file))
 
 logging.info("Building HTML files")
-jinja_env = Environment(loader=FileSystemLoader(HTML_PATH))
-data = {
+html_jinja_env = Environment(loader=FileSystemLoader(HTML_PATH))
+
+html_context = {
     "MINIBLOG_NAME": HTML_MINIBLOG_NAME,
 }
 
-output = jinja_env.get_template("index.html").render(data)
+html_output = html_jinja_env.get_template("index.html").render(html_context)
 
 with open(os.path.join(NGINX_ROOT, "index.html"), "w") as index_file:
-    index_file.write(output)
+    index_file.write(html_output)
 
 
 logging.info("Done building HTML Miniblog")
