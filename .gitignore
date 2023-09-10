@@ -1,5 +1,3 @@
-**/db.sqlite3
-**/__pycache__/
-
-app.sqlite
-static/**
+venv/
+.env
+dist/

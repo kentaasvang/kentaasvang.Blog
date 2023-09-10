@@ -1,7 +1,3 @@
-# miniblog
+# Miniblog
 
-A simple blog written in flask
-
-## Agenda
-
-To learn stuff and have fun
+Just a blog to play around with.
