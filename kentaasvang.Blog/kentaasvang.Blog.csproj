@@ -63,4 +63,8 @@
       <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Markdig" Version="0.33.0" />
+    </ItemGroup>
+
 </Project>

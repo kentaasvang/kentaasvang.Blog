@@ -1,0 +1,14 @@
+@page
+@model PostModel
+@{
+    ViewData["Title"] = "Blog Page";
+}
+
+@if (Model.BlogPost != null)
+{
+    @Html.Raw(Model.BlogPost)
+}
+else
+{
+    <h1>Post not found</h1>
+}
