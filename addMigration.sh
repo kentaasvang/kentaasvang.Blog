@@ -6,4 +6,4 @@ else
   migrationName=$1
 fi
 
-dotnet ef migrations add $migrationName --project kentaasvang.CMS --output-dir Data/Migrations
+dotnet ef migrations add $migrationName --project kentaasvang.Blog --output-dir Data/Migrations

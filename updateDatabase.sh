@@ -1,1 +1,1 @@
-dotnet ef database update --project kentaasvang.CMS
+dotnet ef database update --project kentaasvang.Blog

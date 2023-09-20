@@ -9,7 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{0405BB33
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{11C0BB97-1D2C-4A32-B83B-5E4CBEE281A8}"
+	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		updateDatabase.sh = updateDatabase.sh
+		addMigration.sh = addMigration.sh
 	EndProjectSection
 EndProject
 Global
