@@ -1,7 +1,10 @@
+using kentaasvang.Blog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDatabase(builder.Configuration);
 
 var app = builder.Build();
 
