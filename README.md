@@ -1,3 +1,3 @@
 # kentaasvang.Blog
 
-Everyone needs a blog.
+Every developed who hates himself needs to create a blog. This is mine.
