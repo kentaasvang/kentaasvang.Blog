@@ -31,4 +31,10 @@ public class BlogPostRepository
         
         return blogPostEntity;
     }
+    
+    public void Update(BlogPostEntity blogPost)
+    {
+        _applicationDbContext.BlogPosts.Update(blogPost);
+        _applicationDbContext.SaveChanges();
+    }
 }

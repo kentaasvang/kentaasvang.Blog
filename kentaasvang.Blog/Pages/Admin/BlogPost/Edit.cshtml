@@ -1,0 +1,33 @@
+@page
+@model kentaasvang.Blog.Pages.Admin.BlogPost.EditPageModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1> Edit Post </h1>
+
+@if (Model.BlogPost != null)
+{
+    <form method="post">
+        <div>
+            <label asp-for="BlogPost!.Title"></label>
+            <input asp-for="BlogPost!.Title"/>
+        </div>
+        <div>
+            <label asp-for="BlogPost!.Content"></label>
+            <textarea asp-for="BlogPost!.Content"></textarea>
+        </div>
+        <div>
+            <label asp-for="BlogPost!.IsPublished"></label>
+            <input asp-for="BlogPost!.IsPublished"/>
+        </div>
+        <button type="submit">
+            Update
+        </button>
+    </form>
+}
+else
+{
+    <p> No blog post found </p>
+}

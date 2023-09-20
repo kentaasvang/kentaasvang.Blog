@@ -1,0 +1,76 @@
+@page
+@model kentaasvang.Blog.Pages.Admin.BlogPostsPageModel
+
+@{
+    ViewData["Title"] = "BlogPosts";
+}
+
+<h1> Blog Posts </h1>
+
+
+@if (Model.BlogPosts == null)
+{
+    <p> No blog posts found </p>
+}
+else
+{
+    <table>
+        <thead>
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                title
+            </th>
+            <th>
+                content
+            </th>
+            <th>
+                created
+            </th>
+            <th>
+                updated
+            </th>
+            <th>
+                published
+            </th>
+            <th>
+                is published
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- TODO: move to database-layer --> 
+        @foreach (var post in Model.BlogPosts.Take(20))
+        {
+            <tr>
+                <td>
+                    @post.Id
+                </td>
+                <td>
+                    @post.Title
+                </td>
+                <td>
+                    @post.Content?.Substring(0, 50)
+                </td>
+                <td>
+                    @post.Created
+                </td>
+                <td>
+                    @post.Updated
+                </td>
+                <td>
+                    @post.Published
+                </td>
+                <td>
+                    @post.IsPublished
+                </td>
+                <td>
+                    <a asp-page="/Admin/BlogPost/Edit" asp-route-id="@post.Id">Edit</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,75 @@
+@page 
+@model DashboardPageModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1> Dashboard </h1>
+
+<!-- list of BlogPosts -->
+@if (Model.BlogPosts == null)
+{
+    <p> No blog posts found </p>
+}
+else
+{
+    <table>
+        <thead>
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                title
+            </th>
+            <th>
+                content
+            </th>
+            <th>
+                created
+            </th>
+            <th>
+                updated
+            </th>
+            <th>
+                published
+            </th>
+            <th>
+                is published
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- TODO: move to database-layer --> 
+        @foreach (var post in Model.BlogPosts.Take(20))
+        {
+            <tr>
+                <td>
+                    @post.Id
+                </td>
+                <td>
+                    @post.Title
+                </td>
+                <td>
+                    @post.Content?.Substring(0, 50)
+                </td>
+                <td>
+                    @post.Created
+                </td>
+                <td>
+                    @post.Updated
+                </td>
+                <td>
+                    @post.Published
+                </td>
+                <td>
+                    @post.IsPublished
+                </td>
+                <td>
+                    <a asp-page="/Admin/Article/Edit" asp-route-id="@post.Id">Edit</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
