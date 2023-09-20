@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{11C0
 		addMigration.sh = addMigration.sh
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kentaasvang.Blog.Seeder", "kentaasvang.Blog.Seeder\kentaasvang.Blog.Seeder.csproj", "{7E946A79-E9EE-41BD-904C-CED9EA6C108F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{19A3C066-7673-4B71-A845-378F36340007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19A3C066-7673-4B71-A845-378F36340007}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19A3C066-7673-4B71-A845-378F36340007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E946A79-E9EE-41BD-904C-CED9EA6C108F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E946A79-E9EE-41BD-904C-CED9EA6C108F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E946A79-E9EE-41BD-904C-CED9EA6C108F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E946A79-E9EE-41BD-904C-CED9EA6C108F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

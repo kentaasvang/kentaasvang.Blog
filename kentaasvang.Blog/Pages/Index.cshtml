@@ -1,7 +1,24 @@
 ﻿@page
-@model IndexModel
+@model IndexPageModel
 @{
     ViewData["Title"] = "Home page";
 }
 
 <h1> Home </h1>
+
+<!-- list of BlogPosts -->
+@if (Model.BlogPosts == null)
+{
+    <p> No blog posts found </p>
+}
+else
+{
+    <ul>
+        @foreach (var post in Model.BlogPosts)
+        {
+            <li>
+                <a asp-page="/BlogPost" asp-route-id="@post.Id"> @post.Title </a>
+            </li>
+        }
+    </ul>
+}
