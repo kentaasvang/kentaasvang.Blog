@@ -8,9 +8,9 @@
 <body>
     <ul>
         {% for post in posts %}
-            <a href="{{ url_for('post', id=post[0]) }}">
+            <a href="{{ url_for('post', id=post.id) }}">
                 <li>
-                    <h1> {{ post[1] }} </h1>
+                    <h1> {{ post.title }} </h1>
                 </li>
             </a>
         {% endfor %}

@@ -1,6 +1,5 @@
 import sqlite3
 from typing import Dict, List, Tuple
-from flask import g
 import settings
 
 DATABASE = settings.DATABASE_PATH
@@ -16,3 +15,7 @@ def get_post(id: int) -> Dict[str, int | str]:
     post: Tuple[int, str, str] = db.execute("SELECT * FROM post WHERE id = ?", (id,)).fetchone()
     db.close()
     return post
+
+
+class Post:
+    pass
